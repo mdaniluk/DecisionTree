@@ -4,16 +4,16 @@ rm(list = ls())
 # Classification Tree with rpart
 library(rpart)
 
-#load files
-#letter <- read.table(file = "letter-recognition.data", sep = ",")
+#include files
+source("treeClasses.R")
 
 # grow tree 
-fit <- rpart(Kyphosis ~ Age + Number + Start,
-             method="class", data=kyphosis)
+fit <- rpart(Kyphosis ~ Age + Number + Start, method="class", data=kyphosis)#,
+            # minsplit = 10, cp = 0.0001)
 
 printcp(fit) # display the results 
-plotcp(fit) # visualize cross-validation results 
-summary(fit) # detailed summary of splits
+#plotcp(fit) # visualize cross-validation results 
+#summary(fit) # detailed summary of splits
 
 # plot tree 
 plot(fit, uniform=TRUE, 
