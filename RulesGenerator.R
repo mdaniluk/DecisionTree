@@ -5,6 +5,7 @@ rm(list = ls())
 library(rpart)
 
 #include files
+source("extractRules.R")
 source("treeClasses.R")
 
 # grow tree 
@@ -19,3 +20,4 @@ printcp(fit) # display the results
 plot(fit, uniform=TRUE, 
      main="Classification Tree for Kyphosis")
 text(fit, use.n=TRUE, all=TRUE, cex=.8)
+rules = extractRules(fit)
