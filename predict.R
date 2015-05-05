@@ -20,10 +20,20 @@ PredictClassFromOneExample <- function(setOfRules, example)
   }
   
   if (length(ret) == 0) {
-    return (model@yDefaultValue)
+    return (setOfRules@yDefaultValue)
   }
   
-  return (ret)
+  rl = rle(ret)
+  ret = rl$values[rl$lengths == max(rl$lengths)]
+  if (length(ret) == 1)
+  {
+    return(ret)	
+  }
+  if (any(ret == setOfRules@yDefaultValue))
+  {
+    return(setOfRules@yDefaultValue)
+  }
+  return(ret[1])
   
 }
 
