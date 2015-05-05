@@ -7,10 +7,11 @@ library(rpart)
 #include files
 source("extractRules.R")
 source("treeClasses.R")
+source("predict.R")
 
 # grow tree 
 fit <- rpart(Kyphosis ~ Age + Number + Start, method="class", data=kyphosis)#,
-            # minsplit = 10, cp = 0.0001)
+            # minsplit = 10, cp = 0.002)
 
 printcp(fit) # display the results 
 #plotcp(fit) # visualize cross-validation results 
@@ -21,3 +22,6 @@ plot(fit, uniform=TRUE,
      main="Classification Tree for Kyphosis")
 text(fit, use.n=TRUE, all=TRUE, cex=.8)
 rules = extractRules(fit)
+
+predictions = PredictAll(rules,kyphosis)
+print (predictions)
