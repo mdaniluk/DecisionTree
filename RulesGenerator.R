@@ -8,10 +8,10 @@ library(rpart)
 source("extractRules.R")
 source("treeClasses.R")
 source("predict.R")
+source("ComputeErrorRate.R")
 
 # grow tree 
-fit <- rpart(Kyphosis ~ Age + Number + Start, method="class", data=kyphosis)#,
-            # minsplit = 10, cp = 0.002)
+fit <- rpart(Kyphosis ~ Age + Number + Start, method="class", data=kyphosis, minsplit = 5, cp = 0.002)
 
 printcp(fit) # display the results 
 #plotcp(fit) # visualize cross-validation results 
@@ -24,4 +24,5 @@ text(fit, use.n=TRUE, all=TRUE, cex=.8)
 rules = extractRules(fit)
 
 predictions = PredictAll(rules,kyphosis)
-print (predictions)
+
+e = ComputeErrorRate(rules, kyphosis)
