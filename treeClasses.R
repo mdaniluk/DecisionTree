@@ -3,3 +3,6 @@ rule.split <- setClass("rule.split", slots = c(attribute = "character", value = 
 
 # path  contains information about particular rule
 rule.path <- setClass("rule.path", slots = c(rule.split = "list", yValue = "character"))
+
+#set of rules
+rule.set <- setClass("rule.set", slots = c(rules = "list", yName = "character", yDefaultValue = "character"))

@@ -2,6 +2,9 @@ extractRules <- function(model, print = FALSE)
 {
   if (!inherits(model, "rpart")) stop("Not a legitimate rpart tree")
 
+  #default attribute
+  target <- as.character(attr(model$terms, "variables")[2])
+ # print (target)
   # Get some information.
   frm     <- model$frame
   names   <- row.names(frm)
@@ -32,7 +35,8 @@ extractRules <- function(model, print = FALSE)
       
     }
   }
-  return (rules)
+  rule.set(rules = rules, yName = target, yDefaultValue = ylevels[frm[1,]$yval] );
+  #print (ylevels[frm[1,]$yval])
 }
 
 rpartPathToRules <- function(pth)
