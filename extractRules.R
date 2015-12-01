@@ -18,7 +18,7 @@ extractRules <- function(model, print = FALSE)
     if (frm[i,1] == "<leaf>")
     {
       pth <- path.rpart(model, nodes=as.numeric(names[i]), print.it=FALSE)
-      
+
       if (print) {
         cat("\n")
         cat(sprintf(" Rule number: %s ", names[i]))

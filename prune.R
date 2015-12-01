@@ -32,7 +32,7 @@ pruneRules <-function(setOfRules, data, cp)
       #remove rule from set
       setOfRulesTmp@rules <- setOfRulesTmp@rules[-i]
       errorRate = ComputeErrorRate(setOfRulesTmp, data)
-      if (errorRate < minErrorRate)
+      if (errorRate <= minErrorRate)
       {
         bestSet <- setOfRulesTmp
         minErrorRate <- errorRate
@@ -49,7 +49,7 @@ pruneRules <-function(setOfRules, data, cp)
         #remove k-th rule from set
         setOfRulesTmp@rules[[i]]@rule.split = setOfRulesTmp@rules[[i]]@rule.split[-k]
         errorRate = ComputeErrorRate(setOfRulesTmp, data)
-        if (errorRate < minErrorRate)
+        if (errorRate <= minErrorRate)
         {
           bestSet <- setOfRulesTmp
           minErrorRate <- errorRate

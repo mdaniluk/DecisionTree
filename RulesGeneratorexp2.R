@@ -41,7 +41,7 @@ for (i in 1:iter) {
   dataset.perm.test <- dataset.perm[(ceiling(nrow(dataset.perm)*0.5)+1):nrow(dataset.perm),]
   
   #trainig Model 1
-  treeBig <- rpart(dataset.perm.trainBig, method="class", data=dataset.perm.trainBig, minsplit = 5, cp = 0.00001)
+  treeBig <- rpart(dataset.perm.trainBig, method="class", data=dataset.perm.trainBig, minsplit = 30, cp = 0.00001)
   printcp(treeBig)
   plot(treeBig, uniform=TRUE, 
        main="Decision Tree")

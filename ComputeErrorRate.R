@@ -1,6 +1,5 @@
 ComputeErrorRate <- function(setOfRules, data)
 {
-  
   ComputeError(data[, setOfRules@yName], PredictAll(setOfRules, data));
 }
 
